@@ -6,17 +6,17 @@ void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
   src_length = (src == s21_NULL) ? 0 : s21_strlen(src);
   str_length = (str == s21_NULL) ? 0 : s21_strlen(str);
   s21_size_t fin_length = src_length + str_length;
-  if (start_index <= src_length) {
-    res = (char *)calloc(src_length + str_length + 1, sizeof(char));
-  }
-  if (res) {
-    for (s21_size_t i = 0; i < fin_length; i++) {
-      if (i < start_index) {
-        res[i] = src[i];
-      } else if (i < str_length + start_index) {
-        res[i] = str[i - start_index];
-      } else {
-        res[i] = src[i - str_length];
+  if (start_index <= src_length && str != s21_NULL) {
+    res = (char *)calloc(fin_length + 1, sizeof(char));
+    if (res) {
+      for (s21_size_t i = 0; i < fin_length; i++) {
+        if (i < start_index) {
+          res[i] = src[i];
+        } else if (i < start_index + str_length) {
+          res[i] = str[i - start_index];
+        } else {
+          res[i] = src[i - str_length];
+        }
       }
     }
   }
