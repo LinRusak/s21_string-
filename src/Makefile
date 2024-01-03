@@ -18,9 +18,9 @@ endif
 
 all: test s21_string.a gcov_report
 
-
 clang:
 	cp ../materials/linters/.clang-format .
+<<<<<<< HEAD
 	clang-format -n ./function/*.c *.h 
 
 format:
@@ -34,6 +34,7 @@ gcov_report:
 
 	./test-funct
 	gcovr $(GCOVR) -r . --html --html-details ./coverage.html
+
 	rm -rf
 	genhtml -o report test-funct.info
 	rm -rf *.gcda *.gcno
