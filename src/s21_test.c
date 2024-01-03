@@ -8,24 +8,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "s21_insert.c"  //нужно прописать тесты
-#include "s21_memchr.c"
-#include "s21_memcmp.c"
-#include "s21_memcpy.c"
-#include "s21_memset.c"
-#include "s21_strchr.c"
-#include "s21_strlen.c"
-#include "s21_strncat.c"
-#include "s21_strncmp.c"
-#include "s21_strncpy.c"
-#include "s21_strpbrk.c"
-#include "s21_strrchr.c"
-#include "s21_strspn.c"
-#include "s21_strstr.c"
-#include "s21_strtok.c"
-#include "s21_to_lower.c"  //нужно прописать тесты
-#include "s21_to_upper.c"  //нужно прописать тесты
-#include "s21_trim.c"      //нужно прописать тесты
+#include "./function/s21_insert.c"  //нужно прописать тесты
+#include "./function/s21_memchr.c"
+#include "./function/s21_memcmp.c"
+#include "./function/s21_memcpy.c"
+#include "./function/s21_memset.c"
+#include "./function/s21_strchr.c"
+#include "./function/s21_strlen.c"
+#include "./function/s21_strncat.c"
+#include "./function/s21_strncmp.c"
+#include "./function/s21_strncpy.c"
+#include "./function/s21_strpbrk.c"
+#include "./function/s21_strrchr.c"
+#include "./function/s21_strcspn.c"
+#include "./function/s21_strstr.c"
+#include "./function/s21_strtok.c"
+#include "./function/s21_to_lower.c"  //нужно прописать тесты
+#include "./function/s21_to_upper.c"  //нужно прописать тесты
+#include "./function/s21_trim.c"      //нужно прописать тесты
 
 START_TEST(strlen_test) {
   char test_1[] = "12345";
