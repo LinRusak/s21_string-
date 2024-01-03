@@ -26,10 +26,10 @@ format:
 	clang-format -i ./function/*.c *.h
 
 test: s21_string.a
-	$(CC) $(FLAGS) -o a.out ./tests/s21_test.c -L. $(LIB) $(LIBS_FOR_CHECK_PCKG) $(GCOVR) 
+	$(CC) $(FLAGS) -o a.out s21_test.c -L. $(LIB) $(LIBS_FOR_CHECK_PCKG) $(GCOVR) 
 
 gcov_report:
-	$(CC) $(FLAGS) -o test-funct ./tests/s21_test.c $(LIB_DIR) $(LIBS_FOR_CHECK_PCKG) $(GCOVR) 
+	$(CC) $(FLAGS) -o test-funct s21_test.c $(LIB_DIR) $(LIBS_FOR_CHECK_PCKG) $(GCOVR) 
 
 	# ./test-funct
 	gcovr $(GCOVR) -r . --html --html-details ./coverage.html
