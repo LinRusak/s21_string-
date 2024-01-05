@@ -47,8 +47,9 @@ s21_string.a:
 	rm -rf *.o
 
 clean:
-	rm -f *.a *.o *.so *.out $(TESTFILE) *.info *.gcno *.gcda
+	rm -f *.a *.o *.so *.out *.info *.gcno *.gcda
 	rm -f *$(TEST_LIB)*.a *$(TEST_LIB)*.o
 	rm -rf report
 	rm -rf .clang-format
+	rm -rf ./function/.clang-format
 	rm -rf test-funct
