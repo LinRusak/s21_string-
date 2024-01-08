@@ -8,7 +8,7 @@ char *s21_strtok(char *str, const char *delim) {
     str = olds;
   }
 
-  str += s21_strspn(str, delim);
+  str += s21_strcspn(str, delim);
   if (*str == '\0') {
     olds = str;
     return s21_NULL;
