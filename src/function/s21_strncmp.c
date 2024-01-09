@@ -1,10 +1,17 @@
 #include "../s21_string.h"
 
-int s21_strcmp(const char *str_1, const char *str_2) {
+int s21_strncmp(const char *str1, const char *str2, s21_size_t n) {
   int result = 0;
-
-  for (int x = 0; result == 0 && str_1[x] != '\0' && str_2[x] != '\0'; x += 1)
-    if (str_1[x] != str_2[x]) result = str_1[x] - str_2[x];
-
-  return result == 0 ? 0 : (result > 0 ? 1 : (-1));
+  s21_size_t len_str1 = s21_strlen(str1);
+  s21_size_t len_str2 = s21_strlen(str2);
+  if (len_str1 == len_str2 && n > len_str2) n = len_str2;
+  for (s21_size_t i = 0; i < n; i++) {
+    if (*str1 != *str2) {
+      result = *str1 - *str2;
+      i = n;
+    }
+    str1++;
+    str2++;
+  }
+  return result;
 }

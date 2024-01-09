@@ -1,12 +1,11 @@
 #include "../s21_string.h"
 
 char *s21_strrchr(const char *str, int c) {
-  s21_size_t count = s21_strlen(str);
-  char *buffer = s21_NULL;
-  for (s21_size_t i = 0; i < count; i++) {
-    if (str[i] == c) {
-      buffer = (char *)&str[i];
-    }
+  const char *tmp_str = str;
+  while (*str != '\0') {
+    str++;
+    if (*str == c) tmp_str = str;
   }
-  return buffer;
+  if (*tmp_str != c) tmp_str = s21_NULL;
+  return (char *)tmp_str;
 }

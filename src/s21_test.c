@@ -459,29 +459,29 @@ END_TEST
 // strerror tests
 // ----------------------------------------------------------------------------
 
-// START_TEST(test_strerror_normal) {
-//   int i = -20;
-//   char *result = s21_strerror(i);
-//   char *expected = strerror(i);
-//   ck_assert_str_eq(result, expected);
-// }
-// END_TEST
+START_TEST(test_strerror_normal) {
+  int i = -20;
+  char *result = s21_strerror(i);
+  char *expected = strerror(i);
+  ck_assert_str_eq(result, expected);
+}
+END_TEST
 
-// START_TEST(test_strerror_normal2) {
-//   int i = 0;
-//   char *result = s21_strerror(i);
-//   char *expected = strerror(i);
-//   ck_assert_str_eq(result, expected);
-// }
-// END_TEST
+START_TEST(test_strerror_normal2) {
+  int i = 0;
+  char *result = s21_strerror(i);
+  char *expected = strerror(i);
+  ck_assert_str_eq(result, expected);
+}
+END_TEST
 
-// START_TEST(test_strerror_normal3) {
-//   int i = 140;
-//   char *result = s21_strerror(i);
-//   char *expected = strerror(i);
-//   ck_assert_str_eq(result, expected);
-// }
-// END_TEST
+START_TEST(test_strerror_normal3) {
+  int i = 140;
+  char *result = s21_strerror(i);
+  char *expected = strerror(i);
+  ck_assert_str_eq(result, expected);
+}
+END_TEST
 
 // strrchr tests
 // ----------------------------------------------------------------------------
@@ -2793,11 +2793,11 @@ Suite *s21_string_suite(void) {
   tcase_add_test(tc_strpbrk, test_strpbrk_empty);
   suite_add_tcase(suite, tc_strpbrk);
 
-  // TCase *tc_strerror = tcase_create("s21_strerror");
-  // tcase_add_test(tc_strerror, test_strerror_normal);
-  // tcase_add_test(tc_strerror, test_strerror_normal2);
-  // tcase_add_test(tc_strerror, test_strerror_normal3);
-  // suite_add_tcase(suite, tc_strerror);
+  TCase *tc_strerror = tcase_create("s21_strerror");
+  tcase_add_test(tc_strerror, test_strerror_normal);
+  tcase_add_test(tc_strerror, test_strerror_normal2);
+  tcase_add_test(tc_strerror, test_strerror_normal3);
+  suite_add_tcase(suite, tc_strerror);
 
   TCase *tc_strrchr = tcase_create("s21_strrchr");
   tcase_add_test(tc_strrchr, test_strrchr_normal);

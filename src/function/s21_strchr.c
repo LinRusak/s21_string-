@@ -1,11 +1,9 @@
 #include "../s21_string.h"
 
-char *s21_strchr(const char *str, int symbol) {
-  int strLength = s21_strlen(str) + 1;
-  const char *result = s21_NULL;
-
-  for (int x = 0; x < strLength && result == s21_NULL; x += 1)
-    if (str[x] == symbol) result = (str + x);
-
-  return (char *)result;
+char *s21_strchr(const char *str, int c) {
+  char *result = s21_NULL;
+  for (s21_size_t i = 0; i <= s21_strlen(str); i++) {
+    if (str[i] == c && result == s21_NULL) result = ((char *)str) + i;
+  }
+  return result;
 }

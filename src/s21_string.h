@@ -28,4 +28,4 @@ void s21_insert(char *result, const char *src, const char *str,
                 s21_size_t start_index);
 void *s21_trim(const char *src, const char *trim_chars);
 
-#endif  // S_21_STRING_H_
+#endif S_21_STRING_H_
