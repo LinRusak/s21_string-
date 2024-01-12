@@ -1,22 +1,22 @@
 #include "../s21_string.h"
 
-void *trim(const char *src, const char *trim_chars) {
-  if (src == NULL || trim_chars == NULL) {
+const char *trim(const char *str, const char *trim_chars) {
+  if (str == NULL || trim_chars == NULL) {
     return NULL;
   }
 
-  size_t src_length = 0;
-  while (src[src_length] != '\0') {
-    src_length++;
+  s21_size_t str_length = 0;
+  while (str[str_length] != '\0') {
+    str_length++;
   }
 
-  size_t start = 0;
-  size_t end = src_length - 1;
+  s21_size_t start = 0;
+  s21_size_t end = str_length - 1;
 
-  while (src[start] != '\0') {
+  while (str[start] != '\0') {
     int found = 0;
-    for (size_t i = 0; trim_chars[i] != '\0'; i++) {
-      if (src[start] == trim_chars[i]) {
+    for (s21_size_t i = 0; trim_chars[i] != '\0'; i++) {
+      if (str[start] == trim_chars[i]) {
         found = 1;
         break;
       }
@@ -29,8 +29,8 @@ void *trim(const char *src, const char *trim_chars) {
 
   while (end > start) {
     int found = 0;
-    for (size_t i = 0; trim_chars[i] != '\0'; i++) {
-      if (src[end] == trim_chars[i]) {
+    for (s21_size_t i = 0; trim_chars[i] != '\0'; i++) {
+      if (str[end] == trim_chars[i]) {
         found = 1;
         break;
       }
@@ -42,8 +42,8 @@ void *trim(const char *src, const char *trim_chars) {
   }
 
   if (end < start) {
-    return "";
+    return str + start;
   }
 
-  return (void *)(src + start);
+  return str + start;
 }

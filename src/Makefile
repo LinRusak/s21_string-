@@ -2,7 +2,7 @@
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -std=c11
 LIB = s21_string.a
-LIB_DIR = function/*.c
+LIB_DIR = ./function/*.c
 TESTFILE = s21_test
 GCOVR = -fprofile-arcs -ftest-coverage
 LIBS_FOR_CHECK_PCKG = -lcheck -lsubunit -lm -lpthread 
