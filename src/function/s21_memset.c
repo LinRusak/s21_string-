@@ -1,10 +1,9 @@
 #include "../s21_string.h"
 
-void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
-  char *dest_temp = (char *)dest;
-  const char *src_temp = (const char *)src;
+void *s21_memset(void *str, int c, s21_size_t n) {
+  char *str_temp = (char *)str;
   for (s21_size_t i = 0; i < n; i++) {
-    dest_temp[i] = src_temp[i];
+    str_temp[i] = c;
   }
-  return dest;
+  return str;
 }

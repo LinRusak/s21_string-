@@ -1,6 +1,6 @@
 #include "../s21_string.h"
 
-const char *trim(const char *str, const char *trim_chars) {
+char *s21_trim(char *str, const char *trim_chars) {
   if (str == NULL || trim_chars == NULL) {
     return NULL;
   }
@@ -13,37 +13,24 @@ const char *trim(const char *str, const char *trim_chars) {
   s21_size_t start = 0;
   s21_size_t end = str_length - 1;
 
-  while (str[start] != '\0') {
-    int found = 0;
-    for (s21_size_t i = 0; trim_chars[i] != '\0'; i++) {
-      if (str[start] == trim_chars[i]) {
-        found = 1;
-        break;
-      }
-    }
-    if (found == 0) {
-      break;
-    }
+  while (start <= end && s21_strchr(trim_chars, str[start]) != NULL) {
     start++;
   }
 
-  while (end > start) {
-    int found = 0;
-    for (s21_size_t i = 0; trim_chars[i] != '\0'; i++) {
-      if (str[end] == trim_chars[i]) {
-        found = 1;
-        break;
-      }
-    }
-    if (found == 0) {
-      break;
-    }
+  while (end >= start && s21_strchr(trim_chars, str[end]) != NULL) {
     end--;
   }
 
-  if (end < start) {
-    return str + start;
+  if (start > end) {
+    str[0] = '\0';
+    return str;
   }
 
-  return str + start;
+  s21_size_t new_length = end - start + 1;
+  for (s21_size_t i = 0; i < new_length; i++) {
+    str[i] = str[start + i];
+  }
+  str[new_length] = '\0';  // Гарантирует корректное завершение строки
+
+  return str;
 }

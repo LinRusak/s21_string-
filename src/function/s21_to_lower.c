@@ -1,15 +1,18 @@
 #include "../s21_string.h"
 
-void to_lower(char* str) {
-  if (str == NULL) {
+void s21_to_lower(const char* str, char* result) {
+  if (str == NULL || result == NULL) {
     return;
   }
 
-  int i = 0;
+  s21_size_t i = 0;
   while (str[i] != '\0') {
     if (str[i] >= 'A' && str[i] <= 'Z') {
-      str[i] = str[i] + 32;
+      result[i] = str[i] + 32;
+    } else {
+      result[i] = str[i];
     }
     i++;
   }
+  result[i] = '\0';
 }

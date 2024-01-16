@@ -1,10 +1,11 @@
 #include "../s21_string.h"
 
 #if defined(__APPLE__)
-#define S21_ERROR_LIST 107
+#define S21_ERROR_LIST 108
 #elif defined(__linux__)
 #define S21_ERROR_LIST 134
 #endif
+
 char *s21_strerror(int errnum) {
 #if defined(__APPLE__)
   const char *err_list[S21_ERROR_LIST] = {
