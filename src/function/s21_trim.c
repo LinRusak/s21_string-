@@ -30,7 +30,7 @@ char *s21_trim(char *str, const char *trim_chars) {
   for (s21_size_t i = 0; i < new_length; i++) {
     str[i] = str[start + i];
   }
-  str[new_length] = '\0';  // Гарантирует корректное завершение строки
+  str[new_length] = '\0';
 
   return str;
 }

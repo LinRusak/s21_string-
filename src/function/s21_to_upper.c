@@ -1,6 +1,6 @@
 #include "../s21_string.h"
 
-void s21_to_upper(const char* str, char* result) {
+void s21_to_upper(const char *str, char *result) {
   if (str == NULL || result == NULL) {
     return;
   }
