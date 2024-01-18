@@ -1,7 +1,11 @@
 #include "../s21_string.h"
 
 void s21_to_lower(const char *str, char *result) {
-  if (str == NULL || result == NULL) {
+  if (str == NULL) {
+    result = NULL;
+    return;
+  }
+  if (result == NULL) {
     return;
   }
 

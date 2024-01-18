@@ -1,23 +1,22 @@
 #include "../s21_string.h"
 
 char *s21_trim(char *str, const char *trim_chars) {
-  if (str == NULL || trim_chars == NULL) {
+  if (str == NULL) {
     return NULL;
   }
 
-  s21_size_t str_length = 0;
-  while (str[str_length] != '\0') {
-    str_length++;
-  }
+  s21_size_t str_length = s21_strlen(str);
 
   s21_size_t start = 0;
   s21_size_t end = str_length - 1;
 
-  while (start <= end && s21_strchr(trim_chars, str[start]) != NULL) {
+  while (start <= end &&
+         (trim_chars == NULL || s21_strchr(trim_chars, str[start]) != NULL)) {
     start++;
   }
 
-  while (end >= start && s21_strchr(trim_chars, str[end]) != NULL) {
+  while (end >= start &&
+         (trim_chars == NULL || s21_strchr(trim_chars, str[end]) != NULL)) {
     end--;
   }
 
