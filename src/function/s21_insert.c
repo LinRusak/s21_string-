@@ -1,30 +1,26 @@
 #include "../s21_string.h"
 
-void s21_insert(char *result, const char *src, const char *str,
-                s21_size_t start_index) {
-  if (src != s21_NULL && str != s21_NULL && result != s21_NULL) {
-    s21_size_t len_src = s21_strlen(src);
-    s21_size_t len_str = s21_strlen(str);
-    s21_size_t new_len = len_src + len_str;
+void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
+  s21_size_t src_length, str_length;
+  src_length = (src == s21_NULL) ? 0 : s21_strlen(src);
+  str_length = (str == s21_NULL) ? 0 : s21_strlen(str);
+  s21_size_t fin_length = src_length + str_length;
 
-    if (start_index > len_src) {
-      return;
+  static char res[4096];
+
+  if (start_index <= src_length && fin_length < sizeof(res)) {
+    for (s21_size_t i = 0; i < fin_length; i++) {
+      if (i < start_index) {
+        res[i] = src[i];
+      } else if (i < str_length + start_index) {
+        res[i] = str[i - start_index];
+      } else {
+        res[i] = src[i - str_length];
+      }
     }
-
-    s21_size_t i = 0;
-
-    for (i = 0; i < start_index; i++) {
-      result[i] = src[i];
-    }
-
-    for (s21_size_t j = 0; j < len_str; j++) {
-      result[i++] = str[j];
-    }
-
-    for (s21_size_t j = start_index; j < len_src; j++) {
-      result[i++] = src[j];
-    }
-
-    result[new_len] = '\0';
+    res[fin_length] = '\0';
+    return res;
+  } else {
+    return s21_NULL;
   }
 }

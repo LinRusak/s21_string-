@@ -2150,14 +2150,13 @@ START_TEST(s21_sprintf_d_test_0) {
 }
 END_TEST
 
-// to_lover tests
+// to_lower tests
 // ----------------------------------------------------------------------------
 
 START_TEST(test_to_lower_1) {
   char str[] = "HeLlO, SchOOl";
   char expected[] = "hello, school";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2165,28 +2164,23 @@ END_TEST
 START_TEST(test_to_lower_2) {
   char str[] = "AbC$^dEfGhIjKlM";
   char expected[] = "abc$^defghijklm";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_to_lower_3) {
-  const char *str = NULL;
-  const char *expected = NULL;
-  char result[6] = {0};
-  s21_to_lower(str, result);
-  if (result != NULL && expected != NULL) {
-    ck_assert_str_eq(result, expected);
-  }
+  const char *str = s21_NULL;
+  const char *expected = s21_NULL;
+  char *result = (char *)s21_to_lower(str);
+  ck_assert_ptr_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_to_lower_4) {
   char str[] = "Ra&NdOmStRi*ng";
   char expected[] = "ra&ndomstri*ng";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2194,8 +2188,7 @@ END_TEST
 START_TEST(test_to_lower_5) {
   char str[] = "12*3AbC";
   char expected[] = "12*3abc";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2203,8 +2196,7 @@ END_TEST
 START_TEST(test_to_lower_6) {
   char str[] = "T^eStInG";
   char expected[] = "t^esting";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2212,8 +2204,7 @@ END_TEST
 START_TEST(test_to_lower_7) {
   char str[] = "QwE@rTy123";
   char expected[] = "qwe@rty123";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2221,8 +2212,7 @@ END_TEST
 START_TEST(test_to_lower_8) {
   char str[] = "QWE RTY^&*=-+21";
   char expected[] = "qwe rty^&*=-+21";
-  char result[sizeof(str)];
-  s21_to_lower(str, result);
+  char *result = (char *)s21_to_lower(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2231,28 +2221,25 @@ END_TEST
 // ----------------------------------------------------------------------------
 
 START_TEST(test_to_upper_1) {
-  const char *str = "hello, world!";
-  const char *expected = "HELLO, WORLD!";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char str[] = "hello, world!";
+  char expected[] = "HELLO, WORLD!";
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_to_upper_2) {
-  const char *str = "hello";
-  const char *expected = "HELLO";
-  char result[6];
-  s21_to_upper(str, result);
-  ck_assert_str_eq(result, expected);
+  const char *str = s21_NULL;
+  const char *expected = s21_NULL;
+  char *result = (char *)s21_to_upper(str);
+  ck_assert_ptr_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_to_upper_3) {
   char str[] = "is powerful";
   char expected[] = "IS POWERFUL";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2260,8 +2247,7 @@ END_TEST
 START_TEST(test_to_upper_4) {
   char str[] = "welcome to the future";
   char expected[] = "WELCOME TO THE FUTURE";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2269,8 +2255,7 @@ END_TEST
 START_TEST(test_to_upper_5) {
   char str[] = "char arrays manipulation";
   char expected[] = "CHAR ARRAYS MANIPULATION";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2278,8 +2263,7 @@ END_TEST
 START_TEST(test_to_upper_6) {
   char str[] = "123 numbers 456";
   char expected[] = "123 NUMBERS 456";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2287,8 +2271,7 @@ END_TEST
 START_TEST(test_to_upper_7) {
   char str[] = "!@# special ^&* characters";
   char expected[] = "!@# SPECIAL ^&* CHARACTERS";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2296,8 +2279,7 @@ END_TEST
 START_TEST(test_to_upper_8) {
   char str[] = "mixed CaSe LeTtErS";
   char expected[] = "MIXED CASE LETTERS";
-  char result[strlen(str) + 1];
-  s21_to_upper(str, result);
+  char *result = (char *)s21_to_upper(str);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2308,10 +2290,9 @@ END_TEST
 START_TEST(test_insert_1) {
   const char src[] = "I love my . He is very kind!";
   const char str[] = "School21";
-  unsigned long index = 10;
+  s21_size_t start_index = 10;
   char expected[] = "I love my School21. He is very kind!";
-  char result[100];
-  s21_insert(result, src, str, (s21_size_t)index);
+  char *result = s21_insert(src, str, start_index);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2319,55 +2300,48 @@ END_TEST
 START_TEST(test_insert_2) {
   const char src[] = "Aboba!";
   const char str[] = "Hello, ";
-  unsigned long index = 0;
+  s21_size_t start_index = 0;
   char expected[] = "Hello, Aboba!";
-  char result[100];
-  s21_insert(result, src, str, (s21_size_t)index);
+  char *result = s21_insert(src, str, start_index);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_insert_3) {
-  const char src[] = "";
-  const char str[] = "";
-  unsigned long index = 101;
-  const char expected[] = "";
-  char result[101] = "";
-  s21_insert(result, src, str, (s21_size_t)index);
+  const char *src = "";
+  const char *str = "";
+  s21_size_t start_index = 0;
+  const char *expected = "";
+  char *result = s21_insert(src, str, start_index);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_insert_4) {
-  const char *src = NULL;
-  const char str[] = "123";
-  unsigned long index = 1;
-  const char *expected = NULL;
-  char result[100] = "";
-  s21_insert(result, src, str, (s21_size_t)index);
-  if (src != NULL && expected != NULL) {
-    ck_assert_str_eq(result, expected);
-  }
+  const char *src = s21_NULL;
+  const char *str = "123";
+  s21_size_t start_index = 1;
+  const char *expected = s21_NULL;
+  char *result = s21_insert(src, str, start_index);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
-// START_TEST(test_insert_5) {
-//   const char src[] = "123";
-//   const char *str = NULL;
-//   unsigned long index = 1;
-//   char result[100] = "";
-//   s21_insert(result, src, str, (s21_size_t)index);
-//   ck_assert_str_eq(result, src);
-// }
-// END_TEST
+START_TEST(test_insert_5) {
+  const char *src = s21_NULL;
+  const char *str = s21_NULL;
+  s21_size_t start_index = 0;
+  ck_assert_ptr_eq(s21_insert(src, str, start_index), s21_NULL);
+  ck_assert_ptr_eq(s21_insert(src, str, start_index + 1), s21_NULL);
+}
+END_TEST
 
 START_TEST(test_insert_6) {
   const char src[] = "123";
   const char *str = "";
-  unsigned long index = 1;
+  s21_size_t start_index = 1;
   char expected[] = "123";
-  char result[100];
-  s21_insert(result, src, str, (s21_size_t)index);
+  char *result = s21_insert(src, str, start_index);
   ck_assert_str_eq(result, expected);
 }
 END_TEST
@@ -2376,29 +2350,29 @@ END_TEST
 // ----------------------------------------------------------------------------
 
 START_TEST(test_trim_1) {
-  char str[] = "    qwerty Qwerty qwerty    ";
+  const char *str = "    qwerty Qwerty qwerty    ";
   const char *trim_chars = "    ";
   const char *expected = "qwerty Qwerty qwerty";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_trim_2) {
-  char str[] = "     Hello, world!     ";
+  const char str[] = "     Hello, world!     ";
   const char *trim_chars = "    ";
   const char *expected = "Hello, world!";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_trim_3) {
-  char str[] = "  Hello, world!  ";
+  const char str[] = "  Hello, world!  ";
   const char *trim_chars = " \t\n";
   const char expected[] = "Hello, world!";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2420,20 +2394,20 @@ START_TEST(test_trim_5) {
 END_TEST
 
 START_TEST(test_trim_6) {
-  char str[] = "+!!++Abo+ba++00";
-  char trim_chars[] = "+!!0-";
+  const char str[] = "+!!++Abo+ba++00";
+  const char trim_chars[] = "+!!0-";
   char expected[] = "Abo+ba";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
 START_TEST(test_trim_7) {
-  char str[] = "&* !!sc21 * **";
-  char trim_chars[] = "&!* ";
+  const char str[] = "&* !!sc21 * **";
+  const char trim_chars[] = "&!* ";
   char expected[] = "sc21";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2441,8 +2415,8 @@ START_TEST(test_trim_8) {
   char str[] = "qwerty";
   char trim_chars[] = "qwerty";
   char *expected = "";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2450,8 +2424,8 @@ START_TEST(test_trim_9) {
   char str[] = "\tqwerty\t";
   char trim_chars[] = "\t";
   char *expected = "qwerty";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2459,8 +2433,8 @@ START_TEST(test_trim_10) {
   char str[] = "\nqwerty\n";
   char trim_chars[] = "\n";
   char *expected = "qwerty";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2468,8 +2442,8 @@ START_TEST(test_trim_11) {
   char str[] = "  \t\nqwerty \n \t";
   char trim_chars[] = "\t \n";
   char *expected = "qwerty";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2477,8 +2451,8 @@ START_TEST(test_trim_12) {
   char str[] = "  \t\nqwerty \n \t";
   const char *trim_chars = " \t\n";
   const char expected[] = "qwerty";
-  s21_trim(str, trim_chars);
-  ck_assert_str_eq(str, expected);
+  char *result = s21_trim(str, trim_chars);
+  ck_assert_str_eq(result, expected);
 }
 END_TEST
 
@@ -2635,7 +2609,7 @@ Suite *s21_string_suite(void) {
   tcase_add_test(tc_insert, test_insert_2);
   tcase_add_test(tc_insert, test_insert_3);
   tcase_add_test(tc_insert, test_insert_4);
-  // tcase_add_test(tc_insert, test_insert_5);
+  tcase_add_test(tc_insert, test_insert_5);
   tcase_add_test(tc_insert, test_insert_6);
   suite_add_tcase(suite, tc_insert);
 
